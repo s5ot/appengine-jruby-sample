@@ -1,0 +1,15 @@
+== Setup
+
+1) Development Environment
+  http://code.google.com/p/appengine-jruby/wiki/Introduction
+
+2) create config/app_config.yml
+Example:
+----
+user:
+  username: Your twitter Username
+  password: Your twitter Password
+
+yahoo:
+  application_id: Your Yahoo Application ID
+----
