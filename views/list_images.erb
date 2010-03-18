@@ -1,0 +1,19 @@
+<h1>Images</h1>
+
+<table>
+  <tr>
+    <th>Title</th>
+    <th>Image</th>
+  </tr>
+  <% @images.each do |image| %>
+    <tr>
+      <td><%=h image.title %></td>
+      <td><img src="/puts_crop_image_mini/<%= image.id %>" alt="<%= image.filename %>">
+      <td><a href="/show_image/<%=image.id%>">Show</a></td>
+      <td><a href="/edit_image/<%=image.id%>">Edit</a></td>
+      <td><a href="/destroy_image/<%=image.id%>">Destroy</a></td>
+    </tr>
+  <% end %>
+</table>
+
+<p><a href='/new_image'>New Image</a></p>

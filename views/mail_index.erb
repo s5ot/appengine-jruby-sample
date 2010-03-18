@@ -1,0 +1,19 @@
+<h1>Send Mail</h1>
+
+<h2>
+  Send Mail To <%= "#{@user.nickname}<#{@user.email}>" %>
+</h2>
+
+<form method="post" action="/send_mail">
+  <strong>subject</strong></br>
+  <p>
+    <input type="text" name="title"/>
+  </p>
+  <strong>body</strong></br>
+  <p>
+  <textarea name="body" rows="10" cols="25"></textarea>
+  </p>
+  <div>
+  <input type="submit" value="Send Mail">
+  </div>
+</form>

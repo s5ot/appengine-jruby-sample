@@ -1,0 +1,4 @@
+WEB-INF/*
+config/*
+config.ru
+.gems/*

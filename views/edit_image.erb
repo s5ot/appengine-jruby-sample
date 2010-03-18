@@ -1,0 +1,19 @@
+<h1>Edit Image</h1>
+
+<form method="post" enctype="multipart/form-data" action="/update_image/<%= @image.id %>">
+  <p>
+    <label for="image_title">Title</label><br />
+    <input id="image_title" name="image[title]" size="30" type="text" value="<%= @image.title %>" />
+  </p>
+  <p>
+    <label for="image_attachment">Attachment</label><br />
+
+    <input id="image_attachment" name="image[attachment]" size="30" type="file" />
+  </p>
+  <input type="submit" value="Update">
+</form>
+
+<p>
+<a href="/show_image/<%=@image.id%>">Show</a>
+  <a href="/list_images">Back to List</a>
+</p>

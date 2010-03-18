@@ -1,0 +1,37 @@
+<h1>URLFetch sample(Yahoo 形態素解析)</h1>
+
+<% if flash['msg'] %>
+  <%= flash['msg'] %>
+<% end %>
+
+<p>
+  <form action='/analyze' method="GET">
+    <strong>Sentence</strong>
+    <p>
+    <textarea name="sentence" rows="4" cols="40"></textarea>
+    </p>
+    <input type="submit" value="Analyze">
+  </form>
+</p>
+
+<% if @res %>
+  <h3>
+  <%= @sentence %>
+  </h3>
+  
+  <hr/>
+  <table>
+  <% @res.each do |item| %>
+    <tr>
+    <td>
+    <%= item['surface'] %>
+    </td>
+    <td>
+    <%= item['reading'] %>
+    </td>
+    <td>
+    <%= item['pos'] %>
+    </td>
+    </tr>
+  <% end %>
+<% end %>

@@ -1,0 +1,53 @@
+<h1>Image</h1>
+
+<p>
+  <strong>Title</strong><br/>
+  <%=h @image.title %>
+</p>
+
+<p>
+  <strong>Image</strong><br/>
+  <img src="/puts_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+<p>
+  <strong>Image Crop</strong><br/>
+  <img src="/puts_crop_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+<p>
+  <strong>Image Resize</strong><br/>
+  <img src="/puts_resize_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+<p>
+  <strong>Image Rotate</strong><br/>
+  <img src="/puts_rotate_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+<p>
+  <strong>Image Flip</strong><br/>
+  <img src="/puts_flip_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+<p>
+  <strong>Image Scale</strong><br/>
+  <img src="/puts_scale_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+<p>
+  <strong>Image Clip</strong><br/>
+  <img src="/puts_clip_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+<p>
+  <strong>Image Feeling Lucky</strong><br/>
+  <img src="/puts_i_feel_lucky_image/<%=@image.id %>" alt="<%=@image.filename%>">
+</p>
+
+
+<div>
+  <a href="/edit_image/<%= @image.id %>">Edit</a>
+  <a href="/destroy_image/<%= @image.id %>">Destroy</a>
+  <a href="/list_images">View All</a>
+</div>
