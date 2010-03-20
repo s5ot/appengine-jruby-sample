@@ -1,4 +1,9 @@
-<h1>URLFetch sample(twitter)</h1>
+<div class="toolbar">
+  <h1>URLFetch sample(twitter)</h1>
+  <% unless request.path_info == '/' %>
+    <a href="/" class="back">Back</a>
+  <% end %>
+</div>
 
 <% if flash['msg'] %>
   <%= flash['msg'] %>
@@ -6,32 +11,56 @@
 
 <p>
   <form action='/twitter_timeline' method="GET">
-    <strong>Username</strong>
-    <p>
-    <input type="text" name="screen_name">
-    </p>
-    <input type="submit" value="Show Timeline">
+    <% if mobile_device? %>
+      <h2>Username</h2>
+      <ul class="edit rounded">
+        <li>
+        <input type="text" placeholder="" name="screen_name">
+        </li>
+      </ul>
+      <a style="margin:0 10px 10px 10px;color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Show Timeline</a>
+    <%else %>
+      <strong>Username</strong>
+      <p>
+      <input type="text" name="screen_name">
+      </p>
+      <input type="submit" value="Show Timeline">
+    <% end %>
   </form>
 </p>
 
 <% if @res && @res.size != 0 %>
   <hr/>
   <h2><%=h @res.first['user']['screen_name'] %></h2>
-	<table>
-	<% @res.each do |r| %>
-	  <tr>
-	  <td>
-	    <% if r['user']['profile_image_url'] %>
-	      <img src="<%=r['user']['profile_image_url']%>">
-	    <% end %>
-	  </td>
-	  <td>
-	  <%=h r['text'] %>
-	  </td>
-	  <td>
-	  <%=h r['created_at'] %>
-	  </td>
-	  </tr>
-	<% end %>
-	</table>
+  <% if mobile_device? %>
+    <ul class="metal">
+    <% @res.each do |r| %>
+      <li>
+      <% if r['user']['profile_image_url'] %>
+        <img src="<%=r['user']['profile_image_url']%>">
+      <% end %>
+        <%=h r['text'] %><br/>
+        <%=h r['created_at'] %>
+      </li>
+    <% end %>
+    </ul>
+  <% else %>
+    <table>
+    <% @res.each do |r| %>
+      <tr>
+      <td>
+        <% if r['user']['profile_image_url'] %>
+          <img src="<%=r['user']['profile_image_url']%>">
+        <% end %>
+      </td>
+      <td>
+      <%=h r['text'] %>
+      </td>
+      <td>
+      <%=h r['created_at'] %>
+      </td>
+      </tr>
+    <% end %>
+    </table>
+  <% end %>
 <% end %>

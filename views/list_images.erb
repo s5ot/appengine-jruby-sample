@@ -1,19 +1,49 @@
-<h1>Images</h1>
-
-<table>
-  <tr>
-    <th>Title</th>
-    <th>Image</th>
-  </tr>
-  <% @images.each do |image| %>
-    <tr>
-      <td><%=h image.title %></td>
-      <td><img src="/puts_crop_image_mini/<%= image.id %>" alt="<%= image.filename %>">
-      <td><a href="/show_image/<%=image.id%>">Show</a></td>
-      <td><a href="/edit_image/<%=image.id%>">Edit</a></td>
-      <td><a href="/destroy_image/<%=image.id%>">Destroy</a></td>
-    </tr>
+<div class="toolbar">
+  <h1>Images</h1>
+  <% unless request.path_info == '/' %>
+    <a href="/" class="back">Back</a>
   <% end %>
-</table>
+</div>
 
-<p><a href='/new_image'>New Image</a></p>
+<% if @images.size == 0 %>
+  No Image
+<% else %>
+  <% if mobile_device? %>
+    <ul class="metal">
+      <% @images.each do |image| %>
+        <li>
+          <%=h image.title %>
+          <a href="/show_image/<%=image.id%>">
+            <img src="/puts_crop_image_mini/<%= image.id %>" alt="<%= image.filename %>" border="0">
+          </a>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <table>
+      <tr>
+        <th>Title</th>
+        <th>Image</th>
+      </tr>
+      <% @images.each do |image| %>
+        <tr>
+          <td><%=h image.title %></td>
+          <td><img src="/puts_crop_image_mini/<%= image.id %>" alt="<%= image.filename %>"></td>
+          <td><a href="/show_image/<%=image.id%>">Show</a></td>
+          <td><a href="/edit_image/<%=image.id%>">Edit</a></td>
+          <td><a href="/destroy_image/<%=image.id%>">Destroy</a></td>
+        </tr>
+      <% end %>
+    </table>
+  <% end %>
+<% end %>
+
+<% if mobile_device? %>
+  <ul>
+    <li class="whiteButton">
+      <a class="flip" href="/new_image">New Image</a>
+    </li>
+  </ul>
+<% else %>
+  <p><a href='/new_image'>New Image</a></p>
+<% end %>

@@ -1,4 +1,9 @@
-<h1>URLFetch sample(Yahoo 形態素解析)</h1>
+<div class="toolbar">
+  <h1>URLFetch sample(Yahoo 形態素解析)</h1>
+  <% unless request.path_info == '/' %>
+    <a href="/" class="back">Back</a>
+  <% end %>
+</div>
 
 <% if flash['msg'] %>
   <%= flash['msg'] %>
@@ -6,11 +11,23 @@
 
 <p>
   <form action='/analyze' method="GET">
-    <strong>Sentence</strong>
-    <p>
-    <textarea name="sentence" rows="4" cols="40"></textarea>
-    </p>
-    <input type="submit" value="Analyze">
+    <% if mobile_device? %>
+      <h2>Sentence</h2>
+      <ul class="edit rounded">
+        <li>
+        <textarea name="sentence" placeholder="" rows="4" cols="40"></textarea>
+        </li>
+      </ul>
+      <p>
+      </p>
+      <a style="margin:0 10px 10px 10px;color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Analyze</a>
+    <% else %>
+      <strong>Sentence</strong>
+      <p>
+      <textarea name="sentence" rows="4" cols="40"></textarea>
+      </p>
+      <input type="submit" value="Analyze">
+    <% end %>
   </form>
 </p>
 

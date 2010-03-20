@@ -1,53 +1,98 @@
-<h1>Image</h1>
+<div class="toolbar">
+  <h1>Image</h1>
+  <% unless request.path_info == '/' %>
+    <a href="/" class="back">Back</a>
+  <% end %>
+</div>
 
-<p>
-  <strong>Title</strong><br/>
-  <%=h @image.title %>
-</p>
+<% if mobile_device? %>
+  <ul class="metal">
+    <li>
+      <h2><%=h @image.title %></h2>
+    </li>
+    <li>
+      <strong>Image</strong><br/>
+      <img src="/puts_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+    <li>
+      <strong>Image Crop</strong><br/>
+      <img src="/puts_crop_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+    <li>
+      <strong>Image Resize</strong><br/>
+      <img src="/puts_resize_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+    <li>
+      <strong>Image Rotate</strong><br/>
+      <img src="/puts_rotate_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+    <li>
+      <strong>Image Flip</strong><br/>
+      <img src="/puts_flip_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+    <li>
+      <strong>Image Scale</strong><br/>
+      <img src="/puts_scale_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+    <li>
+      <strong>Image Clip</strong><br/>
+      <img src="/puts_clip_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+    <li>
+      <strong>Image Feeling Lucky</strong><br/>
+      <img src="/puts_i_feel_lucky_image/<%=@image.id %>" alt="<%=@image.filename%>">
+    </li>
+  </ul>
+<% else %>
+  <p>
+    <strong>Title</strong><br/>
+    <%=h @image.title %>
+  </p>
 
-<p>
-  <strong>Image</strong><br/>
-  <img src="/puts_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image</strong><br/>
+    <img src="/puts_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
-<p>
-  <strong>Image Crop</strong><br/>
-  <img src="/puts_crop_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image Crop</strong><br/>
+    <img src="/puts_crop_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
-<p>
-  <strong>Image Resize</strong><br/>
-  <img src="/puts_resize_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image Resize</strong><br/>
+    <img src="/puts_resize_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
-<p>
-  <strong>Image Rotate</strong><br/>
-  <img src="/puts_rotate_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image Rotate</strong><br/>
+    <img src="/puts_rotate_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
-<p>
-  <strong>Image Flip</strong><br/>
-  <img src="/puts_flip_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image Flip</strong><br/>
+    <img src="/puts_flip_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
-<p>
-  <strong>Image Scale</strong><br/>
-  <img src="/puts_scale_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image Scale</strong><br/>
+    <img src="/puts_scale_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
-<p>
-  <strong>Image Clip</strong><br/>
-  <img src="/puts_clip_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image Clip</strong><br/>
+    <img src="/puts_clip_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
-<p>
-  <strong>Image Feeling Lucky</strong><br/>
-  <img src="/puts_i_feel_lucky_image/<%=@image.id %>" alt="<%=@image.filename%>">
-</p>
+  <p>
+    <strong>Image Feeling Lucky</strong><br/>
+    <img src="/puts_i_feel_lucky_image/<%=@image.id %>" alt="<%=@image.filename%>">
+  </p>
 
 
-<div>
-  <a href="/edit_image/<%= @image.id %>">Edit</a>
-  <a href="/destroy_image/<%= @image.id %>">Destroy</a>
-  <a href="/list_images">View All</a>
+  <div>
+    <a href="/edit_image/<%= @image.id %>">Edit</a>
+    <a href="/destroy_image/<%= @image.id %>">Destroy</a>
+    <a href="/list_images">View All</a>
+<% end %>
 </div>

@@ -1,7 +1,12 @@
-<h1>TaskQueue sample</h1>
+<div class="toolbar">
+  <h1>TaskQueue sample</h1>
+  <% unless request.path_info == '/' %>
+    <a href="/" class="back">Back</a>
+  <% end %>
+</div>
 
 <h2>Count is: <%= @counter ? @counter.count : 0 %></h2>
 
 <form action="/simple_counter" method="post">
-  <input type="submit" value="Increment">
+  <a style="margin:0 10px 10px 10px;color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Increment</a>
 </form>

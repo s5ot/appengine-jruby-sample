@@ -1,4 +1,5 @@
 WEB-INF/*
 config/*
-config.ru
 .gems/*
+.DS_Store
+bin/*

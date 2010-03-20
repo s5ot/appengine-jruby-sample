@@ -1,19 +1,32 @@
 <h1>Edit Image</h1>
 
 <form method="post" enctype="multipart/form-data" action="/update_image/<%= @image.id %>">
-  <p>
-    <label for="image_title">Title</label><br />
-    <input id="image_title" name="image[title]" size="30" type="text" value="<%= @image.title %>" />
-  </p>
-  <p>
-    <label for="image_attachment">Attachment</label><br />
+  <% if mobile_device? %>
+    <h2>Title</h2>
+    <ul class="edit rounded">
+      <li><input type="text" name="image[title]" placeholder="" /></li>
+    </ul>
+    <h2>Attachment</h2>
+    <input type="file" name="image[title]" placeholder="" />
+    <a class="flip" style="margin:0 10px 10px 10px;color:rgba(0,0,0,.9)" href="#" class="submit whiteButton">Update</a>
+  <% else %>
+    <p>
+      <label for="image_title">Title</label><br />
+      <input id="image_title" name="image[title]" size="30" type="text" value="<%= @image.title %>" />
+    </p>
+    <p>
+      <label for="image_attachment">Attachment</label><br />
 
-    <input id="image_attachment" name="image[attachment]" size="30" type="file" />
-  </p>
-  <input type="submit" value="Update">
+      <input id="image_attachment" name="image[attachment]" size="30" type="file" />
+    </p>
+    <input type="submit" value="Update">
+  <% end %>
 </form>
 
-<p>
-<a href="/show_image/<%=@image.id%>">Show</a>
-  <a href="/list_images">Back to List</a>
-</p>
+<% if mobile_device? %>
+<% else %>
+  <p>
+    <a href="/show_image/<%=@image.id%>">Show</a>
+    <a href="/list_images">Back to List</a>
+  </p>
+<% end %>
